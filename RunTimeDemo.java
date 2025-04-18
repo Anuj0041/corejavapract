@@ -1,45 +1,66 @@
-package learning.inheritance;
+package learning.interfaces;
 
 public class RunTimeDemo {
-public static void main(String[] args) {
-	Cab c=null;
-	OlaCab ola=new OlaCab();
-	c=ola;//run time polymorphism
-	c.fair();
-	//c.tracking();cannot access sub class explicit method with super class variable
-	ola.tracking();// can access with sub class reference variable
-	InDrive in=new InDrive();
-	c=in;
-	c.fair();
-	Uber uber=new Uber();
-	c=uber;
-	c.fair();
-	
+	public static void main(String[] args) 
+	{
+		Teaching t=null;//interface reference variable
+		MathsTeacher mt=new MathsTeacher("Scott");
+		t=mt;//run time polymorphism
+		t.teach("Hindi");
+		//t.getName();error
+		mt.getName();
+		PhysicsTeacher pt=new PhysicsTeacher("Smith");
+		t=pt;//Run time Polymorphism
+		t.teach("English");
+		pt.getName();
+	}
+
 }
-}
- abstract class Cab
+class MathsTeacher implements Teaching
 {
-	abstract void fair();
-}
- class OlaCab extends Cab{
-	 public void tracking()
-	 {
-		 System.out.println("tracking via GPS");
-	 }
-	 public void fair()
-	 {
-		System.out.println("15 Rs Per km"); 
-	 }
- }
-class InDrive extends Cab
- {
-	 public void fair()
-	 {
-		 System.out.println("make your own bid to set the fair");
-	 }
- }
-class Uber extends Cab{
-	public void fair() {
-		System.out.println("10 Rs per km");
+	private String name;
+	public MathsTeacher(String name)
+	{
+		this.name=name;
+		
+	}
+	public void teach (String medium)
+	{
+		System.out.println(name+" Teaches Maths in "+medium );
+	}
+	public void getName()
+	{
+		System.out.println("Teacher Name is " + name);
 	}
 }
+class PhysicsTeacher implements Teaching
+{
+	private String name;
+	public PhysicsTeacher(String name)
+	{
+		this.name=name;
+		
+	}
+	public void teach (String medium)
+	{
+		System.out.println(name+" Teaches Physics in "+medium );
+	}
+	public void getName()
+	{
+		System.out.println("Teacher Name is " + name);
+	}
+
+public void labSessions()
+{
+	System.out.println(name + "takes lab for physics practicals");
+}
+}
+
+
+
+
+
+
+
+
+
