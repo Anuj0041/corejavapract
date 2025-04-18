@@ -1,11 +1,22 @@
-package learning.collections;
+package learning.inputoutput;
+import java.io.Serializable;
+public class Student implements Serializable
+    
+    {
+	
 
-public class Student {
-	public String toString()//overriding tostring method of super class object it is used to represent object in the from of string
-	{
-		return name +" "+rollnumber;
+	private static final long serialVersionUID = 1L;
+	private String name,college,course;
+	private transient float weight;//its value will not saved into a file
+	
+
+	public float getWeight() {
+		return weight;
 	}
-	private String name,rollnumber;
+
+	public void setWeight(float weight) {
+		this.weight = weight;
+	}
 
 	public String getName() {
 		return name;
@@ -15,12 +26,27 @@ public class Student {
 		this.name = name;
 	}
 
-	public String getRollnumber() {
-		return rollnumber;
+	public String getCollege() {
+		return college;
 	}
 
-	public void setRollnumber(String rollnumber) {
-		this.rollnumber = rollnumber;
+	public void setCollege(String college) {
+		this.college = college;
 	}
+
+	public String getCourse() {
+		return course;
+	}
+
+	public void setCourse(String course) {
+		this.course = course;
+	}
+
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 
 }
